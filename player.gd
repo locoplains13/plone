@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var speed = 2
+@export var speed = 3
 var velocity = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
