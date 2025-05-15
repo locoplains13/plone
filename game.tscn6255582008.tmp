@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmdfp1m68ep26"]
+
+[ext_resource type="PackedScene" uid="uid://cwc2wnutlmgy6" path="res://paddle.tscn" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dxua1e8dxvu1j" path="res://wall.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c0xdx4xedlytt" path="res://ball.tscn" id="3_feb5d"]
+
+[node name="game" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -79.0
+offset_top = -52.0
+offset_right = 1223.0
+offset_bottom = 701.0
+texture = ExtResource("1_fc0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="paddle" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(68, 308)
+
+[node name="paddle2" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(1092, 308)
+
+[node name="wall" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(570, -4)
+
+[node name="wall2" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(570, 657)
+
+[node name="ball" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(607, 308)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://13boahljbtq4"]
+
+[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player.gd" id="2_0xm2m"]
+
+[node name="Main" type="Sprite2D"]
+texture = ExtResource("1_ig7tw")
+centered = false
+
+[node name="CharacterBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("2_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = 90.0
+offset_top = 265.0
+offset_right = 130.0
+offset_bottom = 305.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
