@@ -89,8 +89,5 @@ position = Vector2(1170.19, 325)
 position = Vector2(0, 0.274994)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]

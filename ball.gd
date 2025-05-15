@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 300.0
-var score_cpu = 0
-var score_player = 0
+var speed = 300.0
 
 func _ready() -> void:
 	var randomX = [-1,1].pick_random()
