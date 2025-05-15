@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
+var score_cpu = 0
+var score_player = 0
 
 func _ready() -> void:
 	var randomX = [-1,1].pick_random()
@@ -12,5 +14,5 @@ func _physics_process(delta: float) -> void:
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		speed += 30
-		velocity = velocity.bounce(collision.get_normal())
+		speed += 50
+		velocity = velocity.bounce(collision.get_normal()) * delta

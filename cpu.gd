@@ -1,11 +1,11 @@
-extends StaticBody2D
+extends CharacterBody2D
 
-@export var speed = 3
+@export var speed = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	
 	if position.y > $"../ball".position.y:
-		position.y -= 1.0 * speed
+		position.y -= speed * delta
 	elif position.y < $"../ball".position.y:
-		position.y += 1.0 * speed
-	else:
-		pass
+		position.y += speed * delta
+	move_and_slide()
