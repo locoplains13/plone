@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://13boahljbtq4"]
 
 [ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main.gd" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://bk60mucr78rkk" path="res://cpu.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cxx385lfcvubj" path="res://ball.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://bk60mucr78rkk" path="res://player/cpu.gd" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cxx385lfcvubj" path="res://ball/ball.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -90,7 +90,7 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="ball" parent="." instance=ExtResource("5_lquwl")]
+[node name="ball" parent="." groups=["ball"] instance=ExtResource("5_lquwl")]
 position = Vector2(629, 370)
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]

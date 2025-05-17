@@ -18,7 +18,8 @@ func _on_winzone_2_body_entered(body: Node2D) -> void:
 	instance_ball()
 
 func instance_ball():
-	var ball = preload("res://ball.tscn").instantiate()
+	var ball = preload("res://ball/ball.tscn").instantiate()
 	await get_tree().create_timer(3.0).timeout
 	add_child(ball, true)
+	ball.add_to_group("ball")
 	ball.position = get_window().size / 2
