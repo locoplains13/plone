@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2aksqs6bmlxs"]
+[gd_scene load_steps=12 format=3 uid="uid://d2aksqs6bmlxs"]
 
 [ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_tpcx6"]
 [ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_wmrco"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="4_7ubfg"]
 [ext_resource type="AudioStream" uid="uid://vydjtvyp2nux" path="res://sounds/win.wav" id="6_tpcx6"]
 [ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="6_vf4wd"]
+[ext_resource type="Texture2D" uid="uid://cesjmwuemxy4b" path="res://player1_controls.png" id="7_wmrco"]
+[ext_resource type="Texture2D" uid="uid://dvcty75xc8v70" path="res://player2_controls.png" id="8_8b5ja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -148,6 +150,21 @@ vertical_alignment = 1
 
 [node name="win-sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tpcx6")
+
+[node name="controls1" type="TextureRect" parent="."]
+offset_left = 209.817
+offset_top = 212.0
+offset_right = 432.817
+offset_bottom = 446.0
+texture = ExtResource("7_wmrco")
+
+[node name="controls2" type="TextureRect" parent="."]
+offset_left = 819.988
+offset_top = 215.0
+offset_right = 1051.99
+offset_bottom = 457.0
+texture = ExtResource("8_8b5ja")
+expand_mode = 1
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]

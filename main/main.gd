@@ -33,6 +33,9 @@ func instance_ball():
 	var ball = preload("res://ball/ball.tscn").instantiate()
 	add_child(ball, true)
 	ball.add_to_group("ball")
+	$controls1.hide()
+	if len(get_tree().get_nodes_in_group("paddle")) == 2:
+		$controls2.hide()
 	ball.position.x = 652.11
 	ball.position.y = 338.41
 
