@@ -25,4 +25,5 @@ func instance_ball():
 	await get_tree().create_timer(3.0).timeout
 	add_child(ball, true)
 	ball.add_to_group("ball")
-	ball.position = get_window().size / 2
+	ball.position.x = 652.11
+	ball.position.y = 338.41

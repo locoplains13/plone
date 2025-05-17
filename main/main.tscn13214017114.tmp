@@ -86,7 +86,7 @@ position = Vector2(1320.05, 325)
 position = Vector2(0, 0.274994)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="cpu" type="CharacterBody2D" parent="."]
+[node name="cpu" type="CharacterBody2D" parent="." groups=["paddle"]]
 position = Vector2(1262.4, 300)
 script = ExtResource("3_1bvp3")
 speed = 4
