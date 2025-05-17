@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://13boahljbtq4"]
+[gd_scene load_steps=10 format=3 uid="uid://13boahljbtq4"]
 
 [ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://bk60mucr78rkk" path="res://player/cpu.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cxx385lfcvubj" path="res://ball/ball.tscn" id="5_lquwl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3wy1v"]
+font_size = 86
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -15,10 +18,47 @@ size = Vector2(20, 647.45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(25, 160)
 
-[node name="Main" type="Sprite2D"]
+[node name="Main" type="Sprite2D" node_paths=PackedStringArray("score_player2_label", "score_player1_label")]
+scale = Vector2(0.88172, 1)
 texture = ExtResource("1_ig7tw")
 centered = false
 script = ExtResource("2_lquwl")
+score_player2_label = NodePath("Control/player2")
+score_player1_label = NodePath("Control/player")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="player" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_right = 0.5
+offset_left = -24.5
+offset_right = 24.5
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_3wy1v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_right = 0.619
+offset_left = -24.5
+offset_right = 24.5
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_3wy1v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="wall" type="StaticBody2D" parent="."]
 
@@ -40,14 +80,14 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="winzone2" type="Area2D" parent="."]
-position = Vector2(1170.19, 325)
+position = Vector2(1320.05, 325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="winzone2"]
 position = Vector2(0, 0.274994)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="cpu" type="CharacterBody2D" parent="."]
-position = Vector2(1100, 300)
+position = Vector2(1262.4, 300)
 script = ExtResource("3_1bvp3")
 speed = 4
 
@@ -91,7 +131,7 @@ grow_vertical = 2
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="ball" parent="." groups=["ball"] instance=ExtResource("5_lquwl")]
-position = Vector2(629, 370)
+position = Vector2(627.02, 370)
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]

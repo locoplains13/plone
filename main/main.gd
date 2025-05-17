@@ -2,18 +2,21 @@ extends Sprite2D
 
 var score_player2 = 0
 var score_player1 = 0
+@export var score_player2_label: Label
+@export var score_player1_label: Label
 
-# Called when the node enters the scene tree for the first time.
 func remove_ball():
 	get_node(NodePath(get_child(get_child_count()-1).name)).free()
 
-func _on_winzone_body_entered(body: Node2D) -> void:
+func _on_winzone_body_entered(_body: Node2D) -> void:
 	score_player2 += 1
+	score_player2_label.text = str(score_player2)
 	remove_ball()
 	instance_ball()
 
-func _on_winzone_2_body_entered(body: Node2D) -> void:
+func _on_winzone_2_body_entered(_body: Node2D) -> void:
 	score_player1 += 1
+	score_player1_label.text = str(score_player1)
 	remove_ball()
 	instance_ball()
 
