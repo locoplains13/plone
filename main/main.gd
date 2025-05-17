@@ -17,12 +17,14 @@ func remove_ball():
 func _on_winzone_body_entered(_body: Node2D) -> void:
 	score_player2 += 1
 	score_player2_label.text = str(score_player2)
+	$"win-sound".play()
 	remove_ball()
 	instance_ball()
 
 func _on_winzone_2_body_entered(_body: Node2D) -> void:
 	score_player1 += 1
 	score_player1_label.text = str(score_player1)
+	$"win-sound".play()
 	remove_ball()
 	instance_ball()
 

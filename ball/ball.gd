@@ -17,12 +17,14 @@ func _physics_process(delta: float) -> void:
 			var paddle = collision.get_collider()
 			var new_x:float = -abs(velocity.x) if position.x <= paddle.position.x else abs(velocity.x)
 			var from_center:float = position.y - paddle.position.y
+			$"paddle-hit".play()
 			if from_center > -5 and from_center < 5:
 				print(from_center)
 				velocity = velocity.bounce(collision.get_normal()) * delta
 			else:
 				velocity = Vector2(new_x, from_center*5)
 		else:
+			$"wall-sound".play()
 			velocity = velocity.bounce(collision.get_normal()) * delta
 			
 		# bounce should be different depending on where on the paddle it hit

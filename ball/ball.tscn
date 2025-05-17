@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxx385lfcvubj"]
+[gd_scene load_steps=5 format=3 uid="uid://cxx385lfcvubj"]
 
 [ext_resource type="Script" uid="uid://blaphj4gvvxal" path="res://ball/ball.gd" id="1_x8fbi"]
+[ext_resource type="AudioStream" uid="uid://b2p5nc3q18pu6" path="res://sounds/wall-hit.wav" id="2_pwunn"]
+[ext_resource type="AudioStream" uid="uid://dpvqeuh6lmfcc" path="res://sounds/paddle-hit.wav" id="3_biv8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(13.8889, 13.8889)
@@ -17,3 +19,9 @@ offset_top = -20.0
 position = Vector2(-10, -10)
 scale = Vector2(1.44, 1.44)
 shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="wall-sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pwunn")
+
+[node name="paddle-hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_biv8x")
