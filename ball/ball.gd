@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 			var paddle = collision.get_collider()
 			var new_x:float = -abs(velocity.x) if position.x <= paddle.position.x else abs(velocity.x)
 			var from_center:float = position.y - paddle.position.y
-			if from_center > -10 and from_center < 10:
+			if from_center > -5 and from_center < 5:
 				print(from_center)
 				velocity = velocity.bounce(collision.get_normal()) * delta
 			else:

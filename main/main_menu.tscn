@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://be2tvvkr8g060"]
+
+[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_4l7av"]
+[ext_resource type="Script" uid="uid://bfnqgd088mr2b" path="res://main/main_menu.gd" id="1_w2mlq"]
+[ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="2_dhah8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhah8"]
+texture = ExtResource("1_4l7av")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhah8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbk0"]
+bg_color = Color(1, 1, 1, 0.243137)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2mlq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4l7av"]
+bg_color = Color(0.666667, 0.666667, 0.666667, 0.243137)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w2mlq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dhah8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -55.0
+offset_right = 134.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="single" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_dhah8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_dhah8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekbk0")
+text = "SINGLE PLAYER"
+
+[node name="multi" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_dhah8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_w2mlq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4l7av")
+text = "TWO PLAYER"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -269.0
+offset_right = 136.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_dhah8")
+theme_override_font_sizes/font_size = 38
+text = "PLONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/single" to="." method="_on_single_pressed"]
+[connection signal="pressed" from="VBoxContainer/multi" to="." method="_on_multi_pressed"]

@@ -5,8 +5,14 @@ var score_player1 = 0
 @export var score_player2_label: Label
 @export var score_player1_label: Label
 
+func _process(delta: float) -> void:
+	pass
+
+func _ready() -> void:
+	instance_ball()
+
 func remove_ball():
-	get_node(NodePath(get_child(get_child_count()-1).name)).free()
+	get_tree().get_nodes_in_group("ball")[0].free()
 
 func _on_winzone_body_entered(_body: Node2D) -> void:
 	score_player2 += 1
@@ -21,9 +27,13 @@ func _on_winzone_2_body_entered(_body: Node2D) -> void:
 	instance_ball()
 
 func instance_ball():
-	var ball = preload("res://ball/ball.tscn").instantiate()
 	await get_tree().create_timer(3.0).timeout
+	var ball = preload("res://ball/ball.tscn").instantiate()
 	add_child(ball, true)
 	ball.add_to_group("ball")
 	ball.position.x = 652.11
 	ball.position.y = 338.41
+
+func open_menu(delta: float):
+	if Input.is_action_just_pressed("ui_cancel"):
+		print("open menu")

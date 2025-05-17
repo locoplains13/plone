@@ -1,13 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://13boahljbtq4"]
 
-[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://bk60mucr78rkk" path="res://player/cpu.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cxx385lfcvubj" path="res://ball/ball.tscn" id="5_lquwl"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_3wy1v"]
-font_size = 86
+[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_2nqth"]
+[ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_jlgbl"]
+[ext_resource type="Script" uid="uid://bk60mucr78rkk" path="res://player/cpu.gd" id="3_ngsqm"]
+[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="4_2lhgp"]
+[ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="6_exylu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -18,47 +15,16 @@ size = Vector2(20, 647.45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(25, 160)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
+size = Vector2(663.476, 650.5)
+
 [node name="Main" type="Sprite2D" node_paths=PackedStringArray("score_player2_label", "score_player1_label")]
 scale = Vector2(0.88172, 1)
-texture = ExtResource("1_ig7tw")
+texture = ExtResource("1_2nqth")
 centered = false
-script = ExtResource("2_lquwl")
-score_player2_label = NodePath("Control/player2")
-score_player1_label = NodePath("Control/player")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="player" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.335
-anchor_right = 0.5
-offset_left = -24.5
-offset_right = 24.5
-offset_bottom = 118.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_3wy1v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="player2" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.517
-anchor_right = 0.619
-offset_left = -24.5
-offset_right = 24.5
-offset_bottom = 118.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_3wy1v")
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("2_jlgbl")
+score_player2_label = NodePath("scores/player2")
+score_player1_label = NodePath("scores/player")
 
 [node name="wall" type="StaticBody2D" parent="."]
 
@@ -86,10 +52,10 @@ position = Vector2(1320.05, 325)
 position = Vector2(0, 0.274994)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="cpu" type="CharacterBody2D" parent="."]
+[node name="cpu" type="StaticBody2D" parent="."]
 position = Vector2(1262.4, 300)
-script = ExtResource("3_1bvp3")
-speed = 4
+script = ExtResource("3_ngsqm")
+speed = 6
 
 [node name="ColorRect" type="ColorRect" parent="cpu"]
 anchors_preset = 8
@@ -118,10 +84,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="player" type="CharacterBody2D" parent="." groups=["paddle"]]
+[node name="ColorRect" type="ColorRect" parent="middle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.495
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.758192, 0.758192, 0.758192, 1)
+
+[node name="player" type="StaticBody2D" parent="." groups=["paddle"]]
 position = Vector2(40, 300)
-script = ExtResource("2_0xm2m")
-speed = 4
+script = ExtResource("4_2lhgp")
+speed = 6
 
 [node name="ColorRect" type="ColorRect" parent="player"]
 anchors_preset = 8
@@ -139,8 +115,48 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="ball" parent="." groups=["ball"] instance=ExtResource("5_lquwl")]
-position = Vector2(652.11, 338.41)
+[node name="cpu zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cpu zone"]
+position = Vector2(975.933, 325.75)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="player" type="Label" parent="scores"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_right = 0.5
+offset_left = -8.59683
+offset_right = 40.4032
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("6_exylu")
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player2" type="Label" parent="scores"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_right = 0.619
+offset_left = -24.5
+offset_right = 24.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_exylu")
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]
+[connection signal="body_entered" from="cpu zone" to="cpu" method="_on_cpu_zone_body_entered"]
+[connection signal="body_exited" from="cpu zone" to="cpu" method="_on_cpu_zone_body_exited"]

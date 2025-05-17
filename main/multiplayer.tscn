@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2aksqs6bmlxs"]
+
+[ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_tpcx6"]
+[ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_wmrco"]
+[ext_resource type="Script" uid="uid://fa0cuvpqqppi" path="res://player/player2.gd" id="3_tpcx6"]
+[ext_resource type="Script" uid="uid://c1x1i7gkbs8bm" path="res://player/player.gd" id="4_7ubfg"]
+[ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="6_vf4wd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1329, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(20, 647.45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(25, 160)
+
+[node name="Main" type="Sprite2D" node_paths=PackedStringArray("score_player2_label", "score_player1_label")]
+scale = Vector2(0.88172, 1)
+texture = ExtResource("1_tpcx6")
+centered = false
+script = ExtResource("2_wmrco")
+score_player2_label = NodePath("scores/player2")
+score_player1_label = NodePath("scores/player")
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+position = Vector2(650, -35)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="wall2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(650, 685)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="winzone" type="Area2D" parent="."]
+position = Vector2(-15.86, 324.21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="winzone"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="winzone2" type="Area2D" parent="."]
+position = Vector2(1320.05, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="winzone2"]
+position = Vector2(0, 0.274994)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="player2" type="StaticBody2D" parent="." groups=["paddle"]]
+position = Vector2(1262.4, 300)
+script = ExtResource("3_tpcx6")
+speed = 5
+
+[node name="ColorRect" type="ColorRect" parent="player2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -80.0
+offset_right = 12.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="middle" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="middle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.495
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.758192, 0.758192, 0.758192, 1)
+
+[node name="player" type="StaticBody2D" parent="." groups=["paddle"]]
+position = Vector2(40, 300)
+script = ExtResource("4_7ubfg")
+speed = 6
+
+[node name="ColorRect" type="ColorRect" parent="player"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -80.0
+offset_right = 12.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="player" type="Label" parent="scores"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_right = 0.5
+offset_left = -8.59683
+offset_right = 40.4032
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("6_vf4wd")
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player2" type="Label" parent="scores"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_right = 0.619
+offset_left = -24.5
+offset_right = 24.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_vf4wd")
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
+[connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]
