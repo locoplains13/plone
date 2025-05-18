@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_lquwl")
 [node name="player2" type="StaticBody2D" parent="." groups=["paddle"]]
 position = Vector2(1262.4, 300)
 script = ExtResource("3_tpcx6")
-speed = 5
+speed = 250
 
 [node name="ColorRect" type="ColorRect" parent="player2"]
 anchors_preset = 8
@@ -96,7 +96,7 @@ color = Color(0.758192, 0.758192, 0.758192, 1)
 [node name="player" type="StaticBody2D" parent="." groups=["paddle"]]
 position = Vector2(40, 300)
 script = ExtResource("4_7ubfg")
-speed = 5
+speed = 250
 
 [node name="ColorRect" type="ColorRect" parent="player"]
 anchors_preset = 8
@@ -167,7 +167,7 @@ offset_bottom = 457.0
 texture = ExtResource("8_8b5ja")
 expand_mode = 1
 
-[node name="PauseMeu" parent="." instance=ExtResource("9_7ubfg")]
+[node name="PauseMenu" parent="." instance=ExtResource("9_7ubfg")]
 visible = false
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
