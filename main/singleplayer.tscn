@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://13boahljbtq4"]
+[gd_scene load_steps=14 format=3 uid="uid://13boahljbtq4"]
 
 [ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_2nqth"]
 [ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_jlgbl"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="6_exylu"]
 [ext_resource type="Texture2D" uid="uid://cesjmwuemxy4b" path="res://player1_controls.png" id="7_jlgbl"]
 [ext_resource type="Texture2D" uid="uid://dvcty75xc8v70" path="res://player2_controls.png" id="8_ngsqm"]
+[ext_resource type="PackedScene" uid="uid://b4o1qvjp7huy1" path="res://main/pause menu.tscn" id="9_2lhgp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -58,7 +59,7 @@ shape = SubResource("RectangleShape2D_lquwl")
 [node name="cpu" type="StaticBody2D" parent="."]
 position = Vector2(1262.4, 300)
 script = ExtResource("3_ngsqm")
-speed = 6
+speed = 5
 
 [node name="ColorRect" type="ColorRect" parent="cpu"]
 anchors_preset = 8
@@ -100,7 +101,7 @@ color = Color(0.758192, 0.758192, 0.758192, 1)
 [node name="player" type="StaticBody2D" parent="." groups=["paddle"]]
 position = Vector2(40, 300)
 script = ExtResource("4_2lhgp")
-speed = 6
+speed = 5
 
 [node name="ColorRect" type="ColorRect" parent="player"]
 anchors_preset = 8
@@ -177,6 +178,9 @@ offset_right = 1051.99
 offset_bottom = 457.0
 texture = ExtResource("8_ngsqm")
 expand_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_2lhgp")]
+visible = false
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]

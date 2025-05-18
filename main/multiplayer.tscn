@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2aksqs6bmlxs"]
+[gd_scene load_steps=13 format=3 uid="uid://d2aksqs6bmlxs"]
 
 [ext_resource type="Texture2D" uid="uid://6twrils0bb7v" path="res://background.png" id="1_tpcx6"]
 [ext_resource type="Script" uid="uid://davuuk3rmnoem" path="res://main/main.gd" id="2_wmrco"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bp3tf20sn2ra3" path="res://fonts/Pixeled.ttf" id="6_vf4wd"]
 [ext_resource type="Texture2D" uid="uid://cesjmwuemxy4b" path="res://player1_controls.png" id="7_wmrco"]
 [ext_resource type="Texture2D" uid="uid://dvcty75xc8v70" path="res://player2_controls.png" id="8_8b5ja"]
+[ext_resource type="PackedScene" uid="uid://b4o1qvjp7huy1" path="res://main/pause menu.tscn" id="9_7ubfg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1329, 71)
@@ -95,7 +96,7 @@ color = Color(0.758192, 0.758192, 0.758192, 1)
 [node name="player" type="StaticBody2D" parent="." groups=["paddle"]]
 position = Vector2(40, 300)
 script = ExtResource("4_7ubfg")
-speed = 6
+speed = 5
 
 [node name="ColorRect" type="ColorRect" parent="player"]
 anchors_preset = 8
@@ -165,6 +166,9 @@ offset_right = 1051.99
 offset_bottom = 457.0
 texture = ExtResource("8_8b5ja")
 expand_mode = 1
+
+[node name="PauseMeu" parent="." instance=ExtResource("9_7ubfg")]
+visible = false
 
 [connection signal="body_entered" from="winzone" to="." method="_on_winzone_body_entered"]
 [connection signal="body_entered" from="winzone2" to="." method="_on_winzone_2_body_entered"]

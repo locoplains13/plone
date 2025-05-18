@@ -38,7 +38,3 @@ func instance_ball():
 		$controls2.hide()
 	ball.position.x = 652.11
 	ball.position.y = 338.41
-
-func open_menu(delta: float):
-	if Input.is_action_just_pressed("ui_cancel"):
-		print("open menu")
